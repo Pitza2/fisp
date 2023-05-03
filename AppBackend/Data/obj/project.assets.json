@@ -539,11 +539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IO\\Desktop\\fisp\\WebApplication2\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\IO\\Desktop\\fisp\\WebApplication2\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\IO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IO\\Desktop\\fisp\\WebApplication2\\Data\\obj\\",
+      "outputPath": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\IO\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = testData
-build_property.ProjectDir = C:\Users\IO\Desktop\fisp\WebApplication2\Data\
+build_property.ProjectDir = C:\Users\IO\Desktop\fisp\AppBackend\Data\
