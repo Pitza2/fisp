@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace testData.Entities;
 
-public class Companie
+public class Company
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

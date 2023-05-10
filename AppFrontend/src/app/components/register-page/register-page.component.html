@@ -1,0 +1,7 @@
+<div class="homepage">
+
+  <app-applicant-register *ngIf="isApplicant"></app-applicant-register>
+  <app-company-register *ngIf="!isApplicant"></app-company-register>
+  <mat-checkbox (change)="foo($event)" [ngModel]="isApplicant" class= "example-margin" id="isApplicant">is applicant</mat-checkbox>
+
+</div>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using testData.database;
 using testData.Entities;
 
-namespace testAPI2.Controllers;
+namespace dbAPI.Controllers;
 [ApiController]
 [Route("/api/students")]
 public class StudentController : ControllerBase

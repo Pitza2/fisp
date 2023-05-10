@@ -1,0 +1,22 @@
+<div class="cutie">
+  <mat-form-field class="w-50 paddStart">
+    <mat-label>User Name</mat-label>
+    <input matInput [formControl]="username" placeholder="Ex. Mike Oxlong" id="Username">
+  </mat-form-field>
+
+  <mat-form-field class="w-50">
+    <mat-label>Link LinkedIn</mat-label>
+    <input matInput [formControl]="link"  placeholder="Ex. https://LinkedIn.com" id="LinkedIn">
+  </mat-form-field>
+
+  <mat-form-field class="w-50">
+    <mat-label>Password</mat-label>
+    <input matInput [formControl]="pass" placeholder="Ex. Mike Oxlong" type="password" id="Password">
+  </mat-form-field>
+  <mat-form-field class="w-50">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput [formControl]="pass2" placeholder="Ex. Mike Oxlong" type="password" id="PasswordConf">
+  </mat-form-field>
+  <button mat-raised-button (click)="Register()">register</button>
+</div>
+

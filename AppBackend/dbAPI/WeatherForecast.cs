@@ -1,4 +1,4 @@
-namespace testAPI2;
+namespace dbAPI;
 
 public class WeatherForecast
 {

@@ -7,7 +7,7 @@ using testData.database;
 
 #nullable disable
 
-namespace testAPI2.Migrations
+namespace dbAPI.Migrations
 {
     [DbContext(typeof(testDbContext))]
     [Migration("20230421073718_Initial")]

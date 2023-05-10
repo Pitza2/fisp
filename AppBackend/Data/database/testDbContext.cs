@@ -10,5 +10,6 @@ public class testDbContext : DbContext
         
     }
     public DbSet<Student> Students { get; set; }
-    public DbSet<Companie> Companii { get; set; }
+    public DbSet<Company> Companii { get; set; }
+    public DbSet<Applicant> Applicants { get; set; }
 }
