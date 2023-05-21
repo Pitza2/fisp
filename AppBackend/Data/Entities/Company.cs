@@ -7,7 +7,9 @@ public class Company
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int id { get; set; }
+
     public string name { get; set; }
-    public string address { get; set; }
     public string phone { get; set; }
+    public string password { get; set; }
 }

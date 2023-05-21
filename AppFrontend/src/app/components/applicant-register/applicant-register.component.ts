@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Applicant} from "../../models/Applicant.model";
 import {ApplicantsService} from "../../services/applicants.service";
+import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-applicant-register',
@@ -13,6 +14,7 @@ username :FormControl=new FormControl('');
   link :FormControl=new FormControl('');
   pass :FormControl=new FormControl('');
   pass2 :FormControl=new FormControl('');
+
   constructor(private ApplicantService:ApplicantsService) {
   }
   Register():void{
@@ -32,7 +34,17 @@ username :FormControl=new FormControl('');
         linkedin: this.link.value,
         password: this.pass.value
 
-      }).subscribe(x=>window.alert("plm"));
+      }).pipe(
+        catchError(err =>{
+          const errcode=err.status;
+          if(errcode==400){
+            alert("user already exists");
+          }
+          return throwError(err);
+        })
+      ).subscribe((data)=>{
+        alert("all good");
+      });
     }
   }
 }

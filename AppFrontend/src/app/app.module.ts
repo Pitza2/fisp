@@ -17,6 +17,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { ApplicantRegisterComponent } from './components/applicant-register/applicant-register.component';
 import { CompanyRegisterComponent } from './components/company-register/company-register.component';
 import {MatButtonModule} from "@angular/material/button";
+import { LoginPageComponent } from './components/login-page/login-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import {MatButtonModule} from "@angular/material/button";
     RegisterPageComponent,
     ApplicantRegisterComponent,
     CompanyRegisterComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

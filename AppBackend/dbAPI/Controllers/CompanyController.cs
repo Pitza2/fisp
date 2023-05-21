@@ -1,5 +1,4 @@
 ﻿using System.Security.Cryptography;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testData.database;
@@ -8,10 +7,10 @@ using testData.Entities;
 namespace dbAPI.Controllers;
 
 [ApiController]
-[Route("/api/applicants")]
-public class ApplicantController : ControllerBase
+[Route("/api/companies")]
+public class CompanyController : ControllerBase
 {
-    public static class SecretHasher
+     public static class SecretHasher
     {
         private const int _saltSize = 16; // 128 bits
         private const int _keySize = 32; // 256 bits
@@ -57,32 +56,32 @@ public class ApplicantController : ControllerBase
         }
     }
     private readonly testDbContext _dbContext;
-    public ApplicantController(testDbContext dbContext)
+    public CompanyController(testDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateApplicant(Applicant s)
+    public async Task<IActionResult> CreateCompany(Company s)
     {
-        var applicants = await _dbContext.Applicants.ToListAsync();
-        if (applicants.Aggregate(false, (acc, el) => acc || el.name == s.name))
+        var companies = await _dbContext.Companii.ToListAsync();
+        if (companies.Aggregate(false, (acc, el) => acc || el.name == s.name))
         {
             return BadRequest("username already in use");
         }
         
         
         s.password = SecretHasher.Hash(s.password);
-        var entry= await _dbContext.Applicants.AddAsync(s);
+        var entry= await _dbContext.Companii.AddAsync(s);
         await _dbContext.SaveChangesAsync();
         return Ok(entry.Entity);
     }
     [HttpGet]
-    public async Task<ActionResult<List<Applicant>>> GetApplicants()
+    public async Task<ActionResult<List<Company>>> GetCompanies()
     {
        
-        var applicants = await _dbContext.Applicants.ToListAsync();
-        return Ok(applicants);
+        var companies = await _dbContext.Companii.ToListAsync();
+        return Ok(companies);
        
     }
 }
