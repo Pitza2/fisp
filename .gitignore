@@ -209,3 +209,4 @@ fabric.properties
 #other
 **/sqlite.db/**
 **/bin/**
+**/debug
