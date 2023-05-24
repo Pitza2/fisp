@@ -1,3 +1,6 @@
+<div class="homepage">
+
+<div *ngIf="!loggedIn">
 <div class="cutie">
   <mat-form-field class="w-50 paddStart">
     <mat-label>User Name</mat-label>
@@ -12,6 +15,11 @@
     <mat-label>Confirm Password</mat-label>
     <input matInput [formControl]="pass2" placeholder="Ex. Mike Oxlong" type="password" id="PasswordConf">
   </mat-form-field>
-  <button mat-raised-button class="mb-3 p-4"(click)="LogIn()">register</button>
+  <button mat-raised-button class="mb-3 p-4"(click)="LogIn()">login</button>
 </div>
 
+</div>
+<div *ngIf="loggedIn">
+  <p [textContent]="general.username+general.extra"></p>
+</div>
+</div>

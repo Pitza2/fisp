@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using System.Text;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,50 +12,26 @@ namespace dbAPI.Controllers;
 [Route("/api/applicants")]
 public class ApplicantController : ControllerBase
 {
-    public static class SecretHasher
+   
+
+       
+    static string ComputeSHA256(string s)
     {
-        private const int _saltSize = 16; // 128 bits
-        private const int _keySize = 32; // 256 bits
-        private const int _iterations = 100000;
-        private static readonly HashAlgorithmName _algorithm = HashAlgorithmName.SHA256;
-
-        private const char segmentDelimiter = ':';
-
-        public static string Hash(string input)
+        string hash = String.Empty;
+ 
+        // Initialize a SHA256 hash object
+        using (SHA256 sha256 = SHA256.Create())
         {
-            byte[] salt = RandomNumberGenerator.GetBytes(_saltSize);
-            byte[] hash = Rfc2898DeriveBytes.Pbkdf2(
-                input,
-                salt,
-                _iterations,
-                _algorithm,
-                _keySize
-            );
-            return string.Join(
-                segmentDelimiter,
-                Convert.ToHexString(hash),
-                Convert.ToHexString(salt),
-                _iterations,
-                _algorithm
-            );
+            // Compute the hash of the given string
+            byte[] hashValue = sha256.ComputeHash(Encoding.UTF8.GetBytes(s));
+ 
+            // Convert the byte array to string format
+            foreach (byte b in hashValue) {
+                hash += $"{b:X2}";
+            }
         }
-
-        public static bool Verify(string input, string hashString)
-        {
-            string[] segments = hashString.Split(segmentDelimiter);
-            byte[] hash = Convert.FromHexString(segments[0]);
-            byte[] salt = Convert.FromHexString(segments[1]);
-            int iterations = int.Parse(segments[2]);
-            HashAlgorithmName algorithm = new HashAlgorithmName(segments[3]);
-            byte[] inputHash = Rfc2898DeriveBytes.Pbkdf2(
-                input,
-                salt,
-                iterations,
-                algorithm,
-                hash.Length
-            );
-            return CryptographicOperations.FixedTimeEquals(inputHash, hash);
-        }
+ 
+        return hash;
     }
     private readonly testDbContext _dbContext;
     public ApplicantController(testDbContext dbContext)
@@ -72,7 +49,7 @@ public class ApplicantController : ControllerBase
         }
         
         
-        s.password = SecretHasher.Hash(s.password);
+        s.password = ComputeSHA256(s.password);
         var entry= await _dbContext.Applicants.AddAsync(s);
         await _dbContext.SaveChangesAsync();
         return Ok(entry.Entity);
