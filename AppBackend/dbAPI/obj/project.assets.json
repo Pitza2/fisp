@@ -1766,11 +1766,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\dbAPI\\dbAPI.csproj",
+      "projectUniqueName": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\dbAPI\\dbAPI.csproj",
       "projectName": "dbAPI",
-      "projectPath": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\dbAPI\\dbAPI.csproj",
+      "projectPath": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\dbAPI\\dbAPI.csproj",
       "packagesPath": "C:\\Users\\IO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\dbAPI\\obj\\",
+      "outputPath": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\dbAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\IO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1787,8 +1787,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\IO\\Desktop\\fisp\\AppBackend\\Data\\Data.csproj"
+            "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\Data.csproj"
             }
           }
         }
