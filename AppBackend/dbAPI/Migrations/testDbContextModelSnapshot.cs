@@ -80,6 +80,46 @@ namespace dbAPI.Migrations
 
                     b.ToTable("Students");
                 });
+
+            modelBuilder.Entity("testData.Entities.company_job", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("companyRefid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("jobDescription")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("jobTitle")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("companyRefid");
+
+                    b.ToTable("company_jobs");
+                });
+
+            modelBuilder.Entity("testData.Entities.company_job", b =>
+                {
+                    b.HasOne("testData.Entities.Company", "company")
+                        .WithMany("CompanyJobs")
+                        .HasForeignKey("companyRefid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("company");
+                });
+
+            modelBuilder.Entity("testData.Entities.Company", b =>
+                {
+                    b.Navigation("CompanyJobs");
+                });
 #pragma warning restore 612, 618
         }
     }
