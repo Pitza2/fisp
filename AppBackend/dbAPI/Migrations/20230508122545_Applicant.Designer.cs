@@ -10,8 +10,8 @@ using testData.database;
 namespace dbAPI.Migrations
 {
     [DbContext(typeof(testDbContext))]
-    [Migration("20230421073718_Initial")]
-    partial class Initial
+    [Migration("20230508122545_Applicant")]
+    partial class Applicant
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,26 @@ namespace dbAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0-preview.3.23174.2");
 
-            modelBuilder.Entity("Data.Entities.Companie", b =>
+            modelBuilder.Entity("testData.Entities.Applicant", b =>
+                {
+                    b.Property<string>("name")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("linkedin")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("name");
+
+                    b.ToTable("Applicants");
+                });
+
+            modelBuilder.Entity("testData.Entities.Company", b =>
                 {
                     b.Property<string>("name")
                         .ValueGeneratedOnAdd()
@@ -38,7 +57,7 @@ namespace dbAPI.Migrations
                     b.ToTable("Companii");
                 });
 
-            modelBuilder.Entity("Data.Entities.Student", b =>
+            modelBuilder.Entity("testData.Entities.Student", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()

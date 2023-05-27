@@ -6,7 +6,7 @@ using testData.database;
 
 #nullable disable
 
-namespace testAPI2.Migrations
+namespace dbAPI.Migrations
 {
     [DbContext(typeof(testDbContext))]
     partial class testDbContextModelSnapshot : ModelSnapshot
@@ -16,13 +16,40 @@ namespace testAPI2.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0-preview.3.23174.2");
 
-            modelBuilder.Entity("Data.Entities.Companie", b =>
+            modelBuilder.Entity("testData.Entities.Applicant", b =>
                 {
-                    b.Property<string>("name")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("linkedin")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("address")
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Applicants");
+                });
+
+            modelBuilder.Entity("testData.Entities.Company", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -30,12 +57,12 @@ namespace testAPI2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("name");
+                    b.HasKey("id");
 
                     b.ToTable("Companii");
                 });
 
-            modelBuilder.Entity("Data.Entities.Student", b =>
+            modelBuilder.Entity("testData.Entities.Student", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()

@@ -8,12 +8,11 @@
   background-color: beige;
 
 }
-.container{
-  width: 30vw;
-  height: 30vh;
+.cutie{
+  min-width: 30vw;
+  min-height: 30vh;
   background-color: lightgray;
   align-items: center;
-  justify-content: center;
   display:flex;
   flex-direction: column;
   row-gap: 20px;
@@ -22,7 +21,7 @@
 
 }
 .button{
-position: absolute;
+  position: absolute;
 }
 .example-form {
   min-width: 150px;
@@ -30,10 +29,13 @@ position: absolute;
   width: 100%;
 }
 
-.example-full-width {
-  width: 100%;
+.paddStart {
+  padding-top: 10%;
 }
 .example-margin{
   padding-left: 35%;
   align-self:flex-start;
+}
+.register{
+  padding: 7%;
 }

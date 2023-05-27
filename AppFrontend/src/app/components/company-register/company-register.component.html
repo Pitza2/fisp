@@ -1,0 +1,24 @@
+  <form class="cutie" >
+  <mat-form-field class="w-50 paddStart">
+    <mat-label>Company Name</mat-label>
+    <input matInput [formControl]="username" placeholder="Hella" id="Username">
+
+  </mat-form-field>
+
+  <mat-form-field class="w-50">
+    <mat-label>phone</mat-label>
+    <input matInput [formControl]="phone"  placeholder="Ex. 07xxxxxxxx" id="phone">
+  </mat-form-field>
+
+  <mat-form-field class="w-50">
+    <mat-label>Password</mat-label>
+    <input matInput [formControl]="pass" placeholder="Ex. Mike Oxlong" type="password" id="Password">
+  </mat-form-field>
+  <mat-form-field class="w-50">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput [formControl]="pass2" placeholder="Ex. Mike Oxlong" type="password" id="PasswordConf">
+  </mat-form-field>
+  <button mat-raised-button class="mb-3 p-4"(click)="Register()">register</button>
+    <a href='login'>already registered? login</a>
+  </form>
+

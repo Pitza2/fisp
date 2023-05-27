@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace testAPI2.Migrations
+namespace dbAPI.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

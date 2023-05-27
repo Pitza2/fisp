@@ -1,6 +1,7 @@
+
 using Microsoft.AspNetCore.Mvc;
 
-namespace testAPI2.Controllers;
+namespace dbAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
