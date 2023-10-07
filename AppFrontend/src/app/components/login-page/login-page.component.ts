@@ -4,6 +4,7 @@ import {CompanyService} from "../../services/company.service";
 import {GeneralService} from "../../services/general.service";
 import {catchError, throwError} from "rxjs";
 import {General} from "../../models/General.model";
+import { ApplicantPageComponent } from '../applicant-page/applicant-page.component'
 
 @Component({
   selector: 'app-login-page',
@@ -13,16 +14,13 @@ import {General} from "../../models/General.model";
 export class LoginPageComponent {
   username :FormControl=new FormControl('');
   pass :FormControl=new FormControl('');
-  pass2 :FormControl=new FormControl('');
-  general:General={username:"",extra:"",isApplicant:true}
+
+  general:General={username:"",extra:"",isApplicant:true,id:0}
   loggedIn:boolean=false;
   constructor(private generalService:GeneralService) {
   }
   LogIn(){
-    if(this.pass.value!=this.pass2.value){
-      alert("passwords dont match");
-      return;
-    }
+
     this.generalService.TryLogin(this.username.value,this.pass.value).pipe(catchError(err=>{
       const errcode=err.status;
       if(errcode==404){
@@ -39,6 +37,9 @@ export class LoginPageComponent {
         this.general.username=data.username;
         this.general.extra=data.extra;
         this.general.isApplicant=data.isApplicant;
+        this.general.id=data.id;
+        ApplicantPageComponent
+        window.location.href="home";
         console.log(data);
     })
   }

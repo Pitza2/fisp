@@ -18,6 +18,12 @@ import { ApplicantRegisterComponent } from './components/applicant-register/appl
 import { CompanyRegisterComponent } from './components/company-register/company-register.component';
 import {MatButtonModule} from "@angular/material/button";
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ApplicantPageComponent } from './components/applicant-page/applicant-page.component';
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatCardModule } from '@angular/material/card'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { JobListElementComponent } from './components/job-list-element/job-list-element.component';
+import { CompanyPageComponent } from './components/company-page/company-page.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +33,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     ApplicantRegisterComponent,
     CompanyRegisterComponent,
     LoginPageComponent,
+    ApplicantPageComponent,
+    JobListElementComponent,
+    CompanyPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +50,10 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

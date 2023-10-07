@@ -1,0 +1,10 @@
+.cutie{
+
+  background-color: lightgray;
+  display:flex;
+  flex-direction: column;
+  row-gap: 20px;
+  position: relative;
+  box-shadow: 6px 6px 4px gray;
+
+}
