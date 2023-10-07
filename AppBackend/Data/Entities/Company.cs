@@ -12,4 +12,6 @@ public class Company
     public string name { get; set; }
     public string phone { get; set; }
     public string password { get; set; }
+    
+    public ICollection<company_job> CompanyJobs { get; set; }
 }

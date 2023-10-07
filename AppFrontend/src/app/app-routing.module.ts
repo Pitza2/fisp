@@ -5,6 +5,7 @@ import {RouterModule} from "@angular/router";
 import {StudentListComponent} from "./components/Students/student-list/student-list.component";
 import{LoginPageComponent} from "./components/login-page/login-page.component";
 import {RegisterPageComponent} from "./components/register-page/register-page.component";
+import { ApplicantPageComponent } from './components/applicant-page/applicant-page.component'
 
 const routes : Routes =[
   {
@@ -15,6 +16,9 @@ const routes : Routes =[
   },
   {
     path:'register',component:RegisterPageComponent
+  },
+  {
+    path:'home',component:ApplicantPageComponent
   }
 ]
 @NgModule({
