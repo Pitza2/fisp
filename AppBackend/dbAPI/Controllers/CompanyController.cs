@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testData.database;
@@ -61,8 +62,14 @@ public class CompanyController : ControllerBase
         _dbContext = dbContext;
     }
 
+    public class Companydtg
+    {
+        public string name { get; set; }
+        public string phone { get; set; }
+        public string password { get; set; }
+    }
     [HttpPost]
-    public async Task<IActionResult> CreateCompany(Company s)
+    public async Task<IActionResult> CreateCompany(Companydtg s)
     {
         var companies = await _dbContext.Companii.ToListAsync();
         if (companies.Aggregate(false, (acc, el) => acc || el.name == s.name))
@@ -72,7 +79,10 @@ public class CompanyController : ControllerBase
         
         
         s.password = SecretHasher.Hash(s.password);
-        var entry= await _dbContext.Companii.AddAsync(s);
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<Companydtg, Company>());
+        var mapper = new Mapper(config);
+        
+        var entry= await _dbContext.Companii.AddAsync(mapper.Map<Company>(s));
         await _dbContext.SaveChangesAsync();
         return Ok(entry.Entity);
     }

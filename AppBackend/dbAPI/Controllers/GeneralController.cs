@@ -46,6 +46,7 @@ public class GeneralController : ControllerBase
             g.username = l.username;
             g.extra = c.phone;
             g.isApplicant = false;
+            g.id = c.id;
             return Ok(g);
         }
 
@@ -56,6 +57,7 @@ public class GeneralController : ControllerBase
             g.username = l.username;
             g.extra = a.linkedin;
             g.isApplicant = true;
+            g.id = a.id;
             return Ok(g);
         }
 

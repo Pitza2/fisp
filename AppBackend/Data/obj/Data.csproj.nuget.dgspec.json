@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\Data.csproj": {}
+    "C:\\Users\\IO\\source\\repos\\fisp\\AppBackend\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\Data.csproj": {
+    "C:\\Users\\IO\\source\\repos\\fisp\\AppBackend\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\IO\\source\\repos\\fisp\\AppBackend\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\IO\\source\\repos\\fisp\\AppBackend\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\IO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\IO\\Desktop\\test\\fisp\\AppBackend\\Data\\obj\\",
+        "outputPath": "C:\\Users\\IO\\source\\repos\\fisp\\AppBackend\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\IO\\AppData\\Roaming\\NuGet\\NuGet.Config",
