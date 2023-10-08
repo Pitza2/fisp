@@ -13,4 +13,6 @@ public class testDbContext : DbContext
     public DbSet<Company> Companii { get; set; }
     public DbSet<Applicant> Applicants { get; set; }
     public DbSet<company_job> company_jobs { get; set; }
+    
+    public DbSet<Applicant_job> ApplicantJobs { get; set; }
 }

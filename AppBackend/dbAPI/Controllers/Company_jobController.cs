@@ -77,7 +77,7 @@ public class Company_jobController : ControllerBase
         var mapper =new Mapper(config);
         var job = mapper.Map<company_job>(j);
         await _dbContext.company_jobs.AddAsync(job);
-        var c = await _dbContext.Companii.FindAsync(job.companyRefid);
+        //var c = await _dbContext.Companii.FindAsync(job.companyRefid);
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
