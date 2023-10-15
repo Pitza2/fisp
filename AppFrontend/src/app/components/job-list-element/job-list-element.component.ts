@@ -5,6 +5,7 @@ import { CompanyJobService } from '../../services/company-job.service'
 import { Applicant } from '../../models/Applicant.model'
 import { General } from '../../models/General.model'
 import { GeneralService } from '../../services/general.service'
+import { catchError, throwError } from 'rxjs'
 
 @Component({
   selector: 'app-job-list-element',
@@ -35,8 +36,15 @@ export class JobListElementComponent {
       this.jobservice.apply({
         company_jobRefid: this.job.id,
         applicantRefid: data.id
-      }).subscribe(x => {
-        console.log('ok')
+      }).pipe(catchError(err => {
+        const errcode = err.status
+        if (errcode == 400) {
+          alert('Deja ai aplicat la acest job')
+        }
+        return throwError(err)
+      })).subscribe(x => {
+
+        window.alert('ai aplicat cu succes')
       })
     })
   }

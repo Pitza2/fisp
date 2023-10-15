@@ -18,7 +18,6 @@ students:Student[]=[];
 
       this.studentservice.getAllStudents().subscribe(data=>{
         this.students=data;
-        console.log(this.students);
       });
 
   }

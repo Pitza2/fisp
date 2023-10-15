@@ -11,7 +11,6 @@ export class RegisterPageComponent {
   isApplicant:boolean=true;
   formular:FormControl=new FormControl('');
   foo(event:MatCheckboxChange): void {
-    console.log(this.isApplicant);
     this.isApplicant=!this.isApplicant;
   }
 }

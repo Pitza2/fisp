@@ -33,7 +33,6 @@ export class LoginPageComponent {
       return throwError(err)
     })).subscribe(data => {
       localStorage.setItem('jwt', data)
-      console.log(localStorage.getItem('jwt'))
       void this.router.navigate(['home'])
     })
   }

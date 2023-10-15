@@ -10,7 +10,6 @@ export class InterceptorService implements HttpInterceptor {
   intercept (req: HttpRequest<any>,
     next: HttpHandler): Observable<HttpEvent<any>> {
     const Token = localStorage.getItem('jwt')
-    console.log(Token)
     if (Token) {
       const cloned = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + Token)
