@@ -1,5 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ namespace dbAPI.Controllers;
 
 [ApiController]
 [Route("/api/applicants")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class ApplicantController : ControllerBase
 {
    
@@ -55,6 +58,7 @@ public class ApplicantController : ControllerBase
         return Ok(entry.Entity);
     }
     [HttpGet]
+   
     public async Task<ActionResult<List<Applicant>>> GetApplicants()
     {
        

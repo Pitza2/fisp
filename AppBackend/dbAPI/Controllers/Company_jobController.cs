@@ -1,5 +1,7 @@
 using System.Collections;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using testData.database;
@@ -11,7 +13,7 @@ namespace dbAPI.Controllers;
 
 [ApiController]
 [Route("/api/jobs")]
-
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class Company_jobController : ControllerBase
 {
     private readonly testDbContext _dbContext;
@@ -29,6 +31,7 @@ public class Company_jobController : ControllerBase
         public string jobDescription { get; set; }
         public string companyName { get; set; }
         
+        public int id { get; set; }
         public int companyRefid { get; set; }
     }
     public Company_jobController(testDbContext dbContext)
@@ -51,7 +54,7 @@ public class Company_jobController : ControllerBase
         }
         return Ok(jlist);
     }
-
+    
     [HttpGet("1")]
     public async Task<ActionResult<List<jobCompany>>> getJobsWCompanyName()
     {
@@ -77,7 +80,7 @@ public class Company_jobController : ControllerBase
         var mapper =new Mapper(config);
         var job = mapper.Map<company_job>(j);
         await _dbContext.company_jobs.AddAsync(job);
-        var c = await _dbContext.Companii.FindAsync(job.companyRefid);
+        //var c = await _dbContext.Companii.FindAsync(job.companyRefid);
         await _dbContext.SaveChangesAsync();
         return Ok();
     }

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {Applicant} from "../../models/Applicant.model";
-import {ApplicantsService} from "../../services/applicants.service";
-import {catchError, throwError} from "rxjs";
+import { Component } from '@angular/core'
+import { FormControl } from '@angular/forms'
+import { ApplicantsService } from '../../services/applicants.service'
+import { catchError, throwError } from 'rxjs'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-applicant-register',
@@ -10,41 +10,43 @@ import {catchError, throwError} from "rxjs";
   styleUrls: ['./applicant-register.component.css']
 })
 export class ApplicantRegisterComponent {
-username :FormControl=new FormControl('');
-  link :FormControl=new FormControl('');
-  pass :FormControl=new FormControl('');
-  pass2 :FormControl=new FormControl('');
+  username: FormControl = new FormControl('')
+  link: FormControl = new FormControl('')
+  pass: FormControl = new FormControl('')
+  pass2: FormControl = new FormControl('')
 
-  constructor(private ApplicantService:ApplicantsService) {
+  constructor (private ApplicantService: ApplicantsService,private router:Router) {
   }
-  Register():void{
-    if(this.pass.value!=this.pass2.value){
-      window.alert("passwords don't match");
-    }else {
-      var appl={
+
+  Register (): void {
+    if (this.pass.value != this.pass2.value) {
+      window.alert('passwords don\'t match')
+    } else {
+      var appl = {
         linkedin: this.link.value,
         name: this.username.value,
         password: this.pass.value,
-        id:0
-      };
-      console.log(JSON.stringify(appl));
-      console.log(this.ApplicantService.baseApiUrl);
+        id: 0
+      }
+      console.log(JSON.stringify(appl))
+      console.log(this.ApplicantService.baseApiUrl)
       this.ApplicantService.PostApplicant({
         name: this.username.value,
         linkedin: this.link.value,
         password: this.pass.value
 
       }).pipe(
-        catchError(err =>{
-          const errcode=err.status;
-          if(errcode==400){
-            alert("user already exists");
+        catchError(err => {
+          const errcode = err.status
+          if (errcode == 400) {
+            alert('user already exists')
           }
-          return throwError(err);
+          return throwError(err)
         })
-      ).subscribe((data)=>{
-        alert("all good");
-      });
+      ).subscribe((data) => {
+        alert('all good')
+      })
     }
+    void this.router.navigate(['login'])
   }
 }
