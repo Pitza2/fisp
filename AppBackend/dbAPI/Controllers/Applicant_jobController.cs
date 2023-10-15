@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using testData.database;
@@ -8,6 +10,7 @@ namespace dbAPI.Controllers;
 
 [ApiController]
 [Route("/api/jobs/applicant")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class Applicant_jobController : ControllerBase
 {
     private readonly testDbContext _dbContext;
