@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using testData.database;
 using testData.Entities;
 
@@ -20,8 +21,10 @@ public class Applicant_jobController : ControllerBase
     }
     public class Applicant_jobdto
     {
+        public int id { get; set; }
         public int company_jobRefid { get; set; }
         public int applicantRefid { get; set; }
+        public Applicant_job.Status status { get; set; }
     }
 
     [HttpPost]
@@ -40,5 +43,15 @@ public class Applicant_jobController : ControllerBase
         //var c = await _dbContext.Companii.FindAsync(job.companyRefid);
         await _dbContext.SaveChangesAsync();
         return Ok();
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<Applicant_jobdto>>> getApplicantJobs()
+    {
+        var l= await _dbContext.ApplicantJobs.ToListAsync();
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<Applicant_job,Applicant_jobdto>());
+        var mapper = new Mapper(config);
+        var fin = l.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
+        return Ok(fin);
     }
 }

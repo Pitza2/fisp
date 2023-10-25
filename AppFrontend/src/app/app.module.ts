@@ -24,7 +24,9 @@ import { MatCardModule } from '@angular/material/card'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { JobListElementComponent } from './components/job-list-element/job-list-element.component'
 import { CompanyPageComponent } from './components/company-page/company-page.component'
-import { InterceptorService } from './services/interceptor.service'
+import { InterceptorService } from './services/interceptor.service';
+import { ApplicationListElementComponent } from './components/application-list-element/application-list-element.component'
+import { MatMenuModule } from '@angular/material/menu'
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { InterceptorService } from './services/interceptor.service'
     ApplicantPageComponent,
     JobListElementComponent,
     CompanyPageComponent,
+    ApplicationListElementComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { InterceptorService } from './services/interceptor.service'
     MatButtonModule,
     MatPaginatorModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [
     {

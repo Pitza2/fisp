@@ -1,1 +1,5 @@
-<p>company-page works!</p>
+<div>
+  <div *ngFor="let app of applications">
+    <app-application-list-element [application]="app"></app-application-list-element>
+  </div>
+</div>

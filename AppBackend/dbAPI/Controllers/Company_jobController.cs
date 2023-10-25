@@ -54,7 +54,20 @@ public class Company_jobController : ControllerBase
         }
         return Ok(jlist);
     }
-    
+
+    [HttpGet("id")]
+    public async Task<ActionResult<jobCompany>> getById(int id)
+    {
+        var l = await _dbContext.company_jobs.Include(x=>x.company).FirstOrDefaultAsync(x => x.id == id);
+        if (l == null)
+            return NotFound();
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<company_job, jobCompany>().
+            ForMember(dest=>dest.companyName, 
+                act=>act.MapFrom(src=>src.company.name)));
+        var mapper = new Mapper(config);
+        var fin = mapper.Map<jobCompany>(l);
+        return Ok(fin);
+    }
     [HttpGet("1")]
     public async Task<ActionResult<List<jobCompany>>> getJobsWCompanyName()
     {

@@ -1,7 +1,9 @@
 import { Injectable, SkipSelf } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Applicant } from '../models/Applicant.model'
 import { environment } from '../../environments/environment'
+import { ApplicantJob } from '../models/ApplicantJob.model'
+import { catchError } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +16,10 @@ export class ApplicantsService {
 
   PostApplicant (appl: Applicant) {
     return this.http.post(this.baseApiUrl + 'api/applicants', appl)
+  }
+
+  getById (id: number) {
+    const options = id ? { params: new HttpParams().set('id', id) } : {}
+    return this.http.get<Applicant>(this.baseApiUrl + 'api/applicants/id', options)
   }
 }

@@ -6,6 +6,7 @@ import { Applicant } from '../../models/Applicant.model'
 import { General } from '../../models/General.model'
 import { GeneralService } from '../../services/general.service'
 import { catchError, throwError } from 'rxjs'
+import { ApplicantJobService } from '../../services/applicant-job.service'
 
 @Component({
   selector: 'app-job-list-element',
@@ -28,14 +29,16 @@ export class JobListElementComponent {
     id: 0
   }
 
-  constructor (private jobservice: CompanyJobService, private general: GeneralService) {
+  constructor (private jobService: ApplicantJobService, private general: GeneralService) {
   }
 
   apply () {
     this.general.GetUserData().subscribe(data => {
-      this.jobservice.apply({
+      this.jobService.apply({
         company_jobRefid: this.job.id,
-        applicantRefid: data.id
+        applicantRefid: data.id,
+        status: 0,
+        id: -1
       }).pipe(catchError(err => {
         const errcode = err.status
         if (errcode == 400) {

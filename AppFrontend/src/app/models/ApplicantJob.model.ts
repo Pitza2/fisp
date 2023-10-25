@@ -1,4 +1,7 @@
 export interface ApplicantJob {
-  company_jobRefid: number,
+  id: number
+  company_jobRefid: number
   applicantRefid: number
+  status: number
+
 }
