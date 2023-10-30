@@ -1,0 +1,18 @@
+<div class="d-flex flex-column">
+  <div class="d-inline-flex flex-lg-column">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+      <mat-form-field [style.width.vw] = "30" >
+        <mat-label>Job Title</mat-label>
+        <input matInput formControlName="jobTitle" placeholder="Ex. Software Developer">
+      </mat-form-field>
+      <mat-form-field [style.width.vw] = "30">
+        <mat-label>Job Description</mat-label>
+        <textarea matInput formControlName="jobDescription" placeholder="Job Description"></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+  <div>
+  <button mat-raised-button type="submit" [disabled]="!jobForm.valid" (click)="onSubmit()">Add Job</button>
+  </div>
+</div>
+

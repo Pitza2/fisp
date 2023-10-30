@@ -33,7 +33,11 @@ export class LoginPageComponent {
       return throwError(err)
     })).subscribe(data => {
       localStorage.setItem('jwt', data)
-      void this.router.navigate(['home'])
+      this.generalService.GetUserData().subscribe(data=>{
+        if(data.isApplicant) { this.router.navigate(['home/applicant']) }
+        else { this.router.navigate(['home/company']) }
+        }
+      )
     })
   }
 }

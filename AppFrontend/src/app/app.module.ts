@@ -22,9 +22,12 @@ import { ApplicantPageComponent } from './components/applicant-page/applicant-pa
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatCardModule } from '@angular/material/card'
 import { MatExpansionModule } from '@angular/material/expansion'
-import { JobListElementComponent } from './components/job-list-element/job-list-element.component'
+import { JobListElementComponent } from './components/applicant-page/job-list-element/job-list-element.component'
 import { CompanyPageComponent } from './components/company-page/company-page.component'
-import { InterceptorService } from './services/interceptor.service'
+import { InterceptorService } from './services/interceptor.service';
+import { ApplicationListElementComponent } from './components/company-page/application-list-element/application-list-element.component'
+import { MatMenuModule } from '@angular/material/menu';
+import { NewJobFormComponent } from './components/company-page/new-job-form/new-job-form.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { InterceptorService } from './services/interceptor.service'
     ApplicantPageComponent,
     JobListElementComponent,
     CompanyPageComponent,
+    ApplicationListElementComponent,
+    NewJobFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ import { InterceptorService } from './services/interceptor.service'
     MatButtonModule,
     MatPaginatorModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [
     {

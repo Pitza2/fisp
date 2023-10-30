@@ -66,4 +66,16 @@ public class ApplicantController : ControllerBase
         return Ok(applicants);
        
     }
+
+    [HttpGet("id")]
+    public async Task<ActionResult<Applicant>> getById(int id)
+    {
+        var v= await _dbContext.Applicants.FirstOrDefaultAsync(x => x.id == id);
+        if (v == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(v);
+    }
 }

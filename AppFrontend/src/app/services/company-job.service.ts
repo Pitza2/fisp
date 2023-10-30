@@ -1,5 +1,5 @@
-import { Injectable} from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from '../../environments/environment'
 import { Student } from '../models/student.model'
 import { jobCompany } from '../models/jobCompany'
@@ -19,7 +19,12 @@ export class CompanyJobService {
     return this.http.get<jobCompany[]>(environment.baseApiUrl + 'api/jobs/1')
   }
 
-  apply (aj: ApplicantJob) {
-    return this.http.post(this.baseApiUrl + 'api/jobs/applicant', aj)
+  getById (id: number) {
+    const options = id ? { params: new HttpParams().set('id', id) } : {}
+    return this.http.get<jobCompany>(this.baseApiUrl + 'api/jobs/id',options)
+  }
+
+  AddJob (obj: { jobTitle: string | null | undefined; jobDescription: string | null | undefined }){
+    return this.http.post(this.baseApiUrl + 'api/jobs', obj)
   }
 }
