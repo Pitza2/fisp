@@ -1,0 +1,18 @@
+#applyButton{
+  position: sticky;
+  bottom: 10vh;
+  margin-left: 70vw;
+}
+.addJobForm{
+  position: sticky;
+  top:5vh;
+  align-self: flex-start;
+  width: fit-content;
+}
+.applicantList{
+  width: 40vw;
+}
+
+.page{
+  column-gap: 5vw;
+}

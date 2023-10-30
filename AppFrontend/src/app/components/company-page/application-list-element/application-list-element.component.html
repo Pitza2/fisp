@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container d-flex justify-content-between bg-light border border-secondary rounded-2 mb-5">
   <div id="applicantData">
     <p>Nume Applicant: {{applicant.name}}</p>
     <p>LinkedIn: {{applicant.linkedin}}</p>
     <p>Job: {{companyJob.jobTitle}}</p>
   </div>
   <div id="status info">
-    <mat-form-field>
+    <mat-form-field class="m-3 w-75">
       <mat-label>Applicant status</mat-label>
-      <mat-select [(value)]="statusString">
+      <mat-select [(value)]="statusString" (selectionChange)="updateApplication()">
         <mat-option *ngFor="let status of statuses" [value]="status">
           {{status}}
         </mat-option>

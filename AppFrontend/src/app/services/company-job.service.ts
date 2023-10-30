@@ -23,4 +23,8 @@ export class CompanyJobService {
     const options = id ? { params: new HttpParams().set('id', id) } : {}
     return this.http.get<jobCompany>(this.baseApiUrl + 'api/jobs/id',options)
   }
+
+  AddJob (obj: { jobTitle: string | null | undefined; jobDescription: string | null | undefined }){
+    return this.http.post(this.baseApiUrl + 'api/jobs', obj)
+  }
 }

@@ -1,4 +1,4 @@
-<div class="homepage">
+<div class="homepage" >
 
 
   <div class="cutie">
@@ -9,7 +9,7 @@
 
     <mat-form-field class="w-50">
       <mat-label>Password</mat-label>
-      <input matInput [formControl]="pass" placeholder="Ex. Mike Oxlong" type="password" id="Password">
+      <input matInput (keydown.code.enter)="LogIn()" [formControl]="pass" placeholder="Ex. Mike Oxlong" type="password" id="Password">
     </mat-form-field>
 
     <button mat-raised-button class="mb-3 p-4" (click)="LogIn()">login</button>

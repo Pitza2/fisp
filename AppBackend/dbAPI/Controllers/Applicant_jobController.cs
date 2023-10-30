@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.IdentityModel.Tokens.Jwt;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -27,6 +28,12 @@ public class Applicant_jobController : ControllerBase
         public Applicant_job.Status status { get; set; }
     }
 
+    public class statusObj
+    {
+        public int id { get; set; }
+        public string status { get; set; }
+    }
+
     [HttpPost]
     public async Task<ActionResult> apply(Applicant_jobdto aj)
     {
@@ -48,10 +55,43 @@ public class Applicant_jobController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<Applicant_jobdto>>> getApplicantJobs()
     {
-        var l= await _dbContext.ApplicantJobs.ToListAsync();
+        string jwtToken = HttpContext.Request.Headers.Authorization;
+        jwtToken=jwtToken.Substring(7);//get rid of bearer
+        var token = new JwtSecurityToken(jwtEncodedString:jwtToken);
+        var l= await _dbContext.ApplicantJobs.Include(x=>x.CompanyJob).ToListAsync();
+        var id = token.Claims.First(c => c.Type == "sid").Value;
+        var sublist = l.Where(x => x.CompanyJob.companyRefid.ToString() == id).ToList();
         var config = new MapperConfiguration(cfg => cfg.CreateMap<Applicant_job,Applicant_jobdto>());
         var mapper = new Mapper(config);
-        var fin = l.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
+        var fin = sublist.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
         return Ok(fin);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> updateStatus(statusObj sObj)
+    {
+        var query =
+            from job in _dbContext.ApplicantJobs
+            where sObj.id == job.id
+            select job;
+        foreach (var job in query)
+        {
+            switch (sObj.status)
+            {
+                case "pending":
+                    job.status = Applicant_job.Status.pending;
+                    break;
+                case "accepted":
+                    job.status = Applicant_job.Status.accepted;
+                    break;
+                case "rejected":
+                    job.status = Applicant_job.Status.rejected;
+                    break;
+            }
+
+        }
+
+        _dbContext.SaveChangesAsync();
+        return Ok();
     }
 }

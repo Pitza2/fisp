@@ -1,5 +1,13 @@
-<div>
-  <div *ngFor="let job of joblistings">
-    <app-job-list-element [job]="job"></app-job-list-element>
+
+<div class="d-flex flex-row w-100 justify-content-evenly page flex-grow-1 ">
+  <div class="pt-5 applicantList" >
+    <div>
+      <div *ngFor="let job of joblistings">
+        <app-job-list-element [job]="job"></app-job-list-element>
+      </div>
+    </div>
+  </div>
+  <div class="test w-25">
+    <app-new-job-form></app-new-job-form>
   </div>
 </div>

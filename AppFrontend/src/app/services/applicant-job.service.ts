@@ -22,4 +22,7 @@ export class ApplicantJobService {
   getApplicationList (): Observable<ApplicantJob[]> {
     return this.http.get<ApplicantJob[]>(this.baseApiUrl + 'api/jobs/applicant')
   }
+  updateStatus(oj: { id: number, status: string } ){
+    return this.http.put(this.baseApiUrl + 'api/jobs/applicant', oj).subscribe(dat => {});
+}
 }

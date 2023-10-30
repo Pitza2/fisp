@@ -1,13 +1,14 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core'
-import { ApplicantJob } from '../../models/ApplicantJob.model'
-import { ApplicantsService } from '../../services/applicants.service'
-import { CompanyService } from '../../services/company.service'
-import { Applicant } from '../../models/Applicant.model'
-import { Company } from '../../models/Company.model'
-import { jobCompany } from '../../models/jobCompany'
-import { CompanyJobService } from '../../services/company-job.service'
+import { ApplicantJob } from '../../../models/ApplicantJob.model'
+import { ApplicantsService } from '../../../services/applicants.service'
+import { CompanyService } from '../../../services/company.service'
+import { Applicant } from '../../../models/Applicant.model'
+import { Company } from '../../../models/Company.model'
+import { jobCompany } from '../../../models/jobCompany'
+import { CompanyJobService } from '../../../services/company-job.service'
 import { catchError, throwError } from 'rxjs'
 import { MatMenuTrigger } from '@angular/material/menu'
+import { ApplicantJobService } from '../../../services/applicant-job.service'
 
 @Component({
   selector: 'app-application-list-element',
@@ -44,7 +45,11 @@ export class ApplicationListElementComponent implements OnInit {
 
   statusString = 'pending'
 
-  constructor (private applicantService: ApplicantsService, private companyService: CompanyService, private companyJobService: CompanyJobService) {
+  constructor (
+    private applicantService: ApplicantsService,
+    private companyService: CompanyService,
+    private companyJobService: CompanyJobService,
+    private jobService: ApplicantJobService) {
   }
 
   statuses: string[] = ['pending', 'accepted', 'rejected']
@@ -73,5 +78,8 @@ export class ApplicationListElementComponent implements OnInit {
         break
       }
     }
+  }
+  updateApplication(): void{
+    this.jobService.updateStatus({id: this.application.id,status:this.statusString})
   }
 }
