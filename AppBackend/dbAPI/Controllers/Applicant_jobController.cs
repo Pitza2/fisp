@@ -22,7 +22,6 @@ public class Applicant_jobController : ControllerBase
     }
     public class Applicant_jobdto
     {
-        public int id { get; set; }
         public int company_jobRefid { get; set; }
         public int applicantRefid { get; set; }
         public Applicant_job.Status status { get; set; }
@@ -55,15 +54,10 @@ public class Applicant_jobController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<Applicant_jobdto>>> getApplicantJobs()
     {
-        string jwtToken = HttpContext.Request.Headers.Authorization;
-        jwtToken=jwtToken.Substring(7);//get rid of bearer
-        var token = new JwtSecurityToken(jwtEncodedString:jwtToken);
         var l= await _dbContext.ApplicantJobs.Include(x=>x.CompanyJob).ToListAsync();
-        var id = token.Claims.First(c => c.Type == "sid").Value;
-        var sublist = l.Where(x => x.CompanyJob.companyRefid.ToString() == id).ToList();
         var config = new MapperConfiguration(cfg => cfg.CreateMap<Applicant_job,Applicant_jobdto>());
         var mapper = new Mapper(config);
-        var fin = sublist.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
+        var fin = l.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
         return Ok(fin);
     }
 

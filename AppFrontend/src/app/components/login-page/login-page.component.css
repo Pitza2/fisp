@@ -5,19 +5,20 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: beige;
+  background-color: var(--bone);
 
 }
 .cutie{
   min-width: 30vw;
   min-height: 30vh;
-  background-color: lightgray;
+  background-color: var(--lilac);
   align-items: center;
   display:flex;
   flex-direction: column;
   row-gap: 20px;
   position: relative;
-  box-shadow: 6px 6px 4px gray;
+  box-shadow: 6px 6px 4px var(--purple);
+  border-radius: 25px;
 
 }
 .button{

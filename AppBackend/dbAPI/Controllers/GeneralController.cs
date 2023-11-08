@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using testData.database;
 using testData.Entities;
 using Microsoft.IdentityModel.Tokens;
+using testData.database;
 
 namespace dbAPI.Controllers;
 [ApiController]
@@ -44,6 +44,10 @@ public class GeneralController : ControllerBase
     public async Task<ActionResult<General>> GetUserData()
     {
         string jwtToken = HttpContext.Request.Headers.Authorization;
+        if (jwtToken == null)
+        {
+            return NotFound();
+        }
         jwtToken=jwtToken.Substring(7);//get rid of bearer
         var token = new JwtSecurityToken(jwtEncodedString:jwtToken);
         General g = new General();

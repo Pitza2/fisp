@@ -43,6 +43,7 @@ public class ApplicantController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateApplicant(Applicant s)
     {
         var applicants = await _dbContext.Applicants.ToListAsync();

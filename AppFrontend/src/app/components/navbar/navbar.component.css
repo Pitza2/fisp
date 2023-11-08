@@ -1,0 +1,13 @@
+.buttonFlex{
+  height: 5vh;
+  display: inline-flex;
+  flex-direction: row;
+  gap:0px;
+}
+.headerButton{
+  height: 5vh;
+  width: 100px;
+}
+.header{
+  background-color: var(--lilac);
+}

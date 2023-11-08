@@ -45,6 +45,7 @@ public class CompanyController : ControllerBase
         public string password { get; set; }
     }
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateCompany(Companydtg s)
     {
         var companies = await _dbContext.Companii.ToListAsync();
