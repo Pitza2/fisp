@@ -6,6 +6,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component'
 import { ApplicantPageComponent } from './components/applicant-page/applicant-page.component'
 import { CompanyPageComponent } from './components/company-page/company-page.component'
+import { ApplicationsViewComponent } from './components/applicant-page/applications-view/applications-view.component'
 
 const routes: Routes = [
   {
@@ -21,13 +22,17 @@ const routes: Routes = [
     component: RegisterPageComponent
   },
   {
-    path: 'home/applicant',
+    path: 'home/applicant/:username',
     component: ApplicantPageComponent
   },
 
   {
-    path: 'home/company',
+    path: 'home/company/:username',
     component: CompanyPageComponent
+  },
+  {
+    path: 'applications/:username',
+    component: ApplicationsViewComponent
   }
 ]
 

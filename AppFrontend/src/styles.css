@@ -1,6 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-html,body{
+html,body {
   width: 100%;
   height: 100vh;
+}
+:root {
+  --apple-green: #8ea604ff;
+  --amber: #f5bb00ff;
+  --gamboge: #ec9f05ff;
+  --cocoa-brown: #d76a03ff;
+  --rust: #bf3100ff;
+  --crem: #FFFBF5;
+  --bone: #F7EFE5;
+  --lilac: #C3ACD0;
+  --purple: #7743DB;
 }

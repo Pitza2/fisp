@@ -5,7 +5,7 @@
 }
 .addJobForm{
   position: sticky;
-  top:5vh;
+  top:10vh;
   align-self: flex-start;
   width: fit-content;
 }
