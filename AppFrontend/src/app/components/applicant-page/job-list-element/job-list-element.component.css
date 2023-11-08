@@ -1,18 +1,13 @@
-#applyButton{
-  position: sticky;
-  bottom: 10vh;
-  margin-left: 70vw;
-}
-.addJobForm{
-  position: sticky;
-  top:5vh;
-  align-self: flex-start;
-  width: fit-content;
-}
-.applicantList{
-  width: 40vw;
-}
+.button{
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 8vw;
+  background-color: var(--bone);
+  color: black;
+  font-weight: bold;
 
-.page{
-  column-gap: 5vw;
+}
+.box{
+  background-color: var(--lilac);
+  padding: 10px;
 }

@@ -27,7 +27,9 @@ import { CompanyPageComponent } from './components/company-page/company-page.com
 import { InterceptorService } from './services/interceptor.service';
 import { ApplicationListElementComponent } from './components/company-page/application-list-element/application-list-element.component'
 import { MatMenuModule } from '@angular/material/menu';
-import { NewJobFormComponent } from './components/company-page/new-job-form/new-job-form.component'
+import { NewJobFormComponent } from './components/company-page/new-job-form/new-job-form.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ApplicationsViewComponent } from './components/applicant-page/applications-view/applications-view.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { NewJobFormComponent } from './components/company-page/new-job-form/new-
     CompanyPageComponent,
     ApplicationListElementComponent,
     NewJobFormComponent,
+    NavbarComponent,
+    ApplicationsViewComponent,
   ],
   imports: [
     BrowserModule,
