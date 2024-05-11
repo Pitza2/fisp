@@ -1,11 +1,11 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
-using dbAPI.database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using testData.database;
 using testData.Entities;
 
 namespace dbAPI.Controllers;
@@ -22,7 +22,6 @@ public class Applicant_jobController : ControllerBase
     }
     public class Applicant_jobdto
     {
-        public int id { get; set; }
         public int company_jobRefid { get; set; }
         public int applicantRefid { get; set; }
         public Applicant_job.Status status { get; set; }
