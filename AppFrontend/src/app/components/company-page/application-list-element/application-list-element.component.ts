@@ -22,7 +22,7 @@ export class ApplicationListElementComponent implements OnInit {
     status: 0,
     id: 0
   }
-
+  @Input() lockedMenu: boolean=false
   applicant: Applicant = {
     name: '',
     linkedin: '',

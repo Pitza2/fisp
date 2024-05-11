@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ViewChild } from '@angular/core'
+import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { CompanyService } from '../../services/company.service'
 import { GeneralService } from '../../services/general.service'
@@ -13,10 +13,9 @@ import { NavbarComponent } from '../navbar/navbar.component'
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   username: FormControl = new FormControl('')
   pass: FormControl = new FormControl('')
-text:string="plm"
   constructor (private generalService: GeneralService, private router: Router) {
   }
   @ViewChild('childRef') childComponent: NavbarComponent;
@@ -42,9 +41,8 @@ text:string="plm"
     })
   }
 
-  foo() {
-    // Access child component's methods or properties
-    this.childComponent.addButton({text:'lala',href:'lala'});
+  ngOnInit () {
+    localStorage.setItem('jwt', '')
   }
 
 }

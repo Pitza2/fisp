@@ -1,11 +1,11 @@
 using System.Security.Cryptography;
 using System.Text;
 using AutoMapper;
+using dbAPI.database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using testData.database;
 using testData.Entities;
 
 namespace dbAPI.Controllers;
@@ -45,6 +45,7 @@ public class CompanyController : ControllerBase
         public string password { get; set; }
     }
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateCompany(Companydtg s)
     {
         var companies = await _dbContext.Companii.ToListAsync();

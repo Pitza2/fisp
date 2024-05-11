@@ -1,11 +1,11 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using AutoMapper;
+using dbAPI.database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using testData.database;
 using testData.Entities;
 
 namespace dbAPI.Controllers;
@@ -55,15 +55,10 @@ public class Applicant_jobController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<Applicant_jobdto>>> getApplicantJobs()
     {
-        string jwtToken = HttpContext.Request.Headers.Authorization;
-        jwtToken=jwtToken.Substring(7);//get rid of bearer
-        var token = new JwtSecurityToken(jwtEncodedString:jwtToken);
         var l= await _dbContext.ApplicantJobs.Include(x=>x.CompanyJob).ToListAsync();
-        var id = token.Claims.First(c => c.Type == "sid").Value;
-        var sublist = l.Where(x => x.CompanyJob.companyRefid.ToString() == id).ToList();
         var config = new MapperConfiguration(cfg => cfg.CreateMap<Applicant_job,Applicant_jobdto>());
         var mapper = new Mapper(config);
-        var fin = sublist.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
+        var fin = l.ConvertAll(x=>mapper.Map<Applicant_job,Applicant_jobdto>(x));
         return Ok(fin);
     }
 

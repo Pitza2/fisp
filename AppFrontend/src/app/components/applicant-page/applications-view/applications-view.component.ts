@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ApplicantJobService } from '../../../services/applicant-job.service'
+import { ApplicantJob } from '../../../models/ApplicantJob.model'
 
 @Component({
   selector: 'app-applications-view',
@@ -8,11 +9,15 @@ import { ApplicantJobService } from '../../../services/applicant-job.service'
 })
 export class ApplicationsViewComponent implements OnInit{
 
-  constructor (private applicationsService: ApplicantJobService) {
+  applications: ApplicantJob[] = []
+
+
+  constructor (private jobService: ApplicantJobService) {
   }
 
-
-  ngOnInit () {
-
+  ngOnInit (): void {
+    this.jobService.getApplicationList().subscribe(data => {
+      this.applications = data
+    })
   }
 }
