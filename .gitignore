@@ -202,8 +202,8 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,rider,webstorm,angular
 
 #other
-**/bin/*
-**/obj/*
+**/bin/**
+**/obj/**
 **/.vs/**
 sqlite.db-wal
 sqlite.db-shm

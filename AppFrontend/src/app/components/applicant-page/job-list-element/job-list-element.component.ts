@@ -38,7 +38,7 @@ export class JobListElementComponent {
         company_jobRefid: this.job.id,
         applicantRefid: data.id,
         status: 0,
-        id: -1
+        id:-1
       }).pipe(catchError(err => {
         const errcode = err.status
         if (errcode == 400) {
